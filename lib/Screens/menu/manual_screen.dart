@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:skincacer_project_final/Screens/menu_disease/algal_spot_screen.dart';
 
 import '../../constrance.dart';
+import '../menu_disease/body_disease.dart';
 
 class ManualScreen extends StatefulWidget {
   const ManualScreen({Key key}) : super(key: key);
@@ -18,6 +18,7 @@ class _ManualScreenState extends State<ManualScreen> {
       TextStyle(fontSize: 16, color: Colors.black, fontFamily: "Taitham3");
 
   int indexbutton = 0;
+  int indexmenu = 0; 
 
   void changeButton(int index) {
     setState(() {
@@ -27,18 +28,31 @@ class _ManualScreenState extends State<ManualScreen> {
   }
 
   void pushMenu(index) {
+    indexmenu = index; 
     if (index == 1) {
       Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AlgalSpotScreen(),
+                    builder: (context) => BodyDisease(index: indexmenu),
                   ));
     } else if (index == 2) {
-      print("Push2");
+      Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BodyDisease(index: indexmenu),
+                  ));
     } else if (index == 3) {
-      print('Push3');
+      Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BodyDisease(index: indexmenu),
+                  ));
     } else {
-      print('PUsh4');
+      Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BodyDisease(index: indexmenu),
+                  ));
     }
   }
 
