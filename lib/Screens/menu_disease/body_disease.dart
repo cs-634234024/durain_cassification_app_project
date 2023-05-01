@@ -39,7 +39,10 @@ class BodyDisease extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: kbackgroundColor,
         ),
-        body: changeBody());
+        body: changeBody()
+        ,
+        backgroundColor: kbackgroundColorGreen,);
+        
   }
 }
 
