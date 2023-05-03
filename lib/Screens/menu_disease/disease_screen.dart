@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:skincacer_project_final/Screens/menu_disease/body_disease.dart';
 import '../../constrance.dart';
 
-class AlgalSpotBody extends StatefulWidget {
+class DiseaseScreen extends StatefulWidget {
   final String title;
-  const AlgalSpotBody({
+  final String detail ; 
+  final List images; 
+  final double titlefont;
+
+  const DiseaseScreen({
     Key key,
-    this.title,
+    this.title, this.detail, this.images, this.titlefont,
   }) : super(key: key);
 
   @override
-  State<AlgalSpotBody> createState() => _AlgalSpotBodyState();
+  State<DiseaseScreen> createState() => _DiseaseScreenState();
 }
 
-class _AlgalSpotBodyState extends State<AlgalSpotBody> {
+class _DiseaseScreenState extends State<DiseaseScreen> {
   int imagesindex = 1;
-  int buttonindex = 0;
+  int buttonindex = 1;
 
   void changeIndex(int index) {
     setState(() {
@@ -31,10 +35,6 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
     });
   }
 
-  List<String> imagescard = [
-    'assets/images/disease/menu1.png',
-    'assets/images/disease/menu2.png'
-  ];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -53,7 +53,7 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
                         border: Border.all(color: kbackgroundColor),
                         borderRadius: BorderRadius.circular(80)),
                     child: CircleAvatar(
-                      radius: 30,
+                      radius: 25,
                       backgroundColor: Colors.white,
                       child: Padding(
                         padding: const EdgeInsets.all(14.0),
@@ -66,13 +66,13 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
                     width: 2,
                   ),
                   Column(
-                    children: const [
+                    children:  [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'algal spot',
+                          widget.title,
                           style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                              fontSize: widget.titlefont, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
@@ -84,16 +84,16 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
               padding: const EdgeInsets.only(
                 top: 7,
                 left: 16,
+                right: 50
               ),
               child: Container(
-                  width: size.width - 100,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.white54),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
-                      children: const [
+                      children:  [
                         FaIcon(
                           FontAwesomeIcons.virus,
                         ),
@@ -101,7 +101,7 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
                           width: 10,
                         ),
                         Text(
-                          'ลักษณะใบที่เป็นโรคจุดสาหร่าย',
+                          widget.detail,
                           style: TextStyle(
                               fontSize: 16,
                               color: kbottomColor,
@@ -118,7 +118,7 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
                 children: [
                   buildCardImages(
                     index: 1,
-                    images: imagescard[0],
+                    images: widget.images[0],
                     onclick: changeIndex,
                   ),
                   SizedBox(
@@ -126,7 +126,7 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
                   ),
                   buildCardImages(
                     index: 2,
-                    images: imagescard[0],
+                    images: widget.images[1],
                     onclick: changeIndex,
                   ),
                   SizedBox(
@@ -134,7 +134,7 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
                   ),
                   buildCardImages(
                     index: 3,
-                    images: imagescard[1],
+                    images: widget.images[0],
                     onclick: changeIndex,
                   ),
                   SizedBox(
@@ -142,7 +142,7 @@ class _AlgalSpotBodyState extends State<AlgalSpotBody> {
                   ),
                   buildCardImages(
                     index: 4,
-                    images: imagescard[0],
+                    images: widget.images[1],
                     onclick: changeIndex,
                   )
                 ],
